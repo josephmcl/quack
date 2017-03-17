@@ -1,0 +1,61 @@
+/* TypeWalk.qk
+ * Will not compile because Obj has not method foo
+ * 
+ * Expected output
+ * 
+ * 60 : foo is not a method of class Obj.
+ * 
+ */
+
+class A() {
+}
+
+class C1()  extends Obj {
+   def foo():  Obj {
+       return Obj(); 
+   }
+   def PRINT(): Nothing {
+	"C1\n".PRINT();
+	return;
+   }
+}
+
+class C2() extends C1 {
+   def foo():  C1 {
+        return C1();    /* Conforms to C1.foo() */
+   }
+   def PRINT(): Nothing {
+	"C2\n".PRINT();
+	return;
+   }
+}
+
+class C3() extends C2 { 
+   def foo(): C2 {
+        return C2();   /* Conforms to C2.foo() */
+   }
+   def PRINT(): Nothing {
+	"C3\n".PRINT();
+	return;
+   }
+}
+
+class C4() extends C3 {
+    def foo() : C3 {
+         return C3();  /* Conforms to C3.foo() */
+    }
+    def PRINT(): Nothing {
+	"C4\n".PRINT();
+	return;
+    }
+}
+
+x = C4();    
+a = 0;       
+while ( a < 4 ) {
+   x.PRINT(); 
+   x = x.foo();  
+   a = a + 1;
+}
+ 
+

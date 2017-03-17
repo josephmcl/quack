@@ -1,0 +1,39 @@
+/* Rec.qk
+ * Will not compile. 
+ * 
+ * Expected output
+ * 28 : Method a expected 0 arguments. Got 1 instead.
+ * 
+ */
+
+
+class A(value : Int) {
+
+	this.value = value;
+	
+	def a() : A {
+		if ( this.value > 0 ){	
+			
+			rv = A(this.value - 1);
+			rv.MY_PRINT();
+			", ".PRINT();
+			return rv.a();
+		}
+		else{
+			return A(this.value);
+		}
+	}
+
+	def MY_PRINT() : Nothing {
+		this.value.PRINT();
+		return;
+	}
+}
+
+a = A(5);
+a.MY_PRINT();
+"\n".PRINT();
+a = a.a(10); //breaks here
+"\n".PRINT();
+a.MY_PRINT();
+

@@ -1,0 +1,191 @@
+/* Flow.qk
+ * Demos control flow, control flow nesting, and short circuit operations
+ *
+ * Expected Output
+ * 
+ * 0, 1, 2, 3, 
+ * 4, 3, 2, 1, 
+ * 0, 1, 2, 3, 
+ * 4, 3, 2, 1, 
+ * 0 foo, 1 foo, 2 foo, 3 zot, 4 cat, 
+ * 5 bar, 6 bar, 7 foo, 8 foo, 9 foo, 
+ * x: 0 - y: 0, y: 1, 
+ * x: 1 - y: 0, y: 1, 
+ * x: 2 - y: 0, y: 1, 
+ * x: 3 - y: 0, y: 1, 
+ * x: 4 - y: 0, y: 1, 
+ * Clearly
+ * Told You!
+ * Odd 9, Even 8, Odd 7, Even 6, Odd 5
+ * x: 4, x: 3, x: 2, x: 1, x:0
+ *
+ */
+
+class Parity(value : Int){
+	this.value = value;
+	def check() : Int {
+		rv = this.value;
+
+		half = this.value / 2;
+		if (2*half < this.value) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
+}
+
+
+x = 0; 
+while (x < 4){
+	x.PRINT();
+	", ".PRINT();
+	x = x + 1;
+}
+"\n".PRINT();
+
+while (x > 0){
+	x.PRINT();
+	", ".PRINT();
+	x = x - 1;
+}
+"\n".PRINT();
+
+while (x <= 3){
+	x.PRINT();
+	", ".PRINT();
+	x = x + 1;
+}
+"\n".PRINT();
+
+while (x >= 1){
+	x.PRINT();
+	", ".PRINT();
+	x = x - 1;
+}
+"\n".PRINT();
+
+while (x < 10){
+
+	if ((x < 3) or (x > 6)){
+		x.PRINT();
+		" foo, ".PRINT();
+	}
+	elif (x == 3){
+		x.PRINT();
+		" zot, ".PRINT();
+	}
+	elif ((x >= 4) and (x < 5)){
+		x.PRINT();
+		" cat, \n".PRINT();
+	}
+	else{
+		x.PRINT();
+		" bar, ".PRINT();
+	}
+	x = x + 1;
+}
+"\n".PRINT();
+
+x = 0;
+y = 0;
+
+while(x < 5){
+	"x: ".PRINT();
+	x.PRINT();
+	x = x + 1;
+	" - ".PRINT();
+	while(y < 2){
+		"y: ".PRINT();
+		y.PRINT();
+		", ".PRINT(); 
+		y = y + 1;
+	}
+	"\n".PRINT(); 
+	y = 0;
+}
+
+x = 0;
+treu = false;
+
+if (not treu and (x+1 >= 1)){
+	"Clearly\n".PRINT();
+}
+if (not true and (x < 1)){
+	"No way!\n".PRINT();
+}
+else {
+	"Told you!".PRINT();
+}
+"\n".PRINT();
+
+
+x = 10;
+while (not (x==0)){
+	x = x - 1;
+	if (x > 5){
+		if ( Parity(x).check() == 0){
+			"Even ".PRINT();
+		}
+		else {
+			"Odd ".PRINT();
+		}
+		x.PRINT();
+		", ".PRINT();
+	}
+	elif (x == 5 or x == 0){
+		if (x == 5){
+			"Odd ".PRINT();
+			x.PRINT();
+			"\n".PRINT();
+		}
+		else {
+			"x:".PRINT();
+			x.PRINT();
+			"\n".PRINT();
+		}
+	}
+	else{
+		if (true){
+			"x: ".PRINT();
+			x.PRINT();
+			", ".PRINT();
+		}
+		else {
+			"x: ".PRINT();
+			(x+5).PRINT();
+			", ".PRINT();
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

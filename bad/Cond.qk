@@ -1,0 +1,45 @@
+/* Cond.qk
+ * Will not compile. 
+ *
+ * Expected Output
+ * While condition expects resolution to subtype of Boolean. Got Int instead.
+ *
+ */
+
+class A (value : Int){
+	this.value = value;
+	def a () : Int {
+		if (true){
+		}
+		while (this.value){ // breaks here
+			"Super cool!\n".PRINT();
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

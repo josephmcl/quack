@@ -1,0 +1,42 @@
+/* Rec.qk
+ * Demos recursive method calls
+ *
+ * Expected output:
+ *
+ * 5
+ * 4, 3, 2, 1, 0, 
+ * 0    
+ *
+ */
+
+
+class A(value : Int) {
+
+	this.value = value;
+	
+	def a() : A {
+		if ( this.value > 0 ){	
+			
+			rv = A(this.value - 1);
+			rv.MY_PRINT();
+			", ".PRINT();
+			return rv.a();
+		}
+		else{
+			return A(this.value);
+		}
+	}
+
+	def MY_PRINT() : Nothing {
+		this.value.PRINT();
+		return;
+	}
+}
+
+a = A(5);
+a.MY_PRINT();
+"\n".PRINT();
+a = a.a();
+"\n".PRINT();
+a.MY_PRINT();
+

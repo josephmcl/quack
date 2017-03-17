@@ -1,0 +1,95 @@
+/* Sqr.qk
+ * Demos Class Inherit., ADD method overloading
+ *
+ * Expected Output
+ *
+ * (1, 0) + (0, 1) = (1, 1)
+ * ((1, 0), (0, 1))
+ * ((4, 4), (1, 1))
+ * ((3, 3), (6, 6))
+ *
+ */
+
+class Pt(x: Int, y: Int) extends Obj {
+	this.x = x;
+	this.y = y;
+
+	def STRING() : String {
+		return "A Point";
+	}
+	def PRINT() : Nothing {
+		"(".PRINT();
+		this.x.PRINT();
+		", ".PRINT();
+		this.y.PRINT();
+		")".PRINT();
+		return;
+	}
+
+	def ADD(other: Pt) : Pt {
+		return Pt(this.x + other._x(), this.y + other._y());
+	}
+
+	def _x() : Int {
+		return this.x;
+	}
+
+	def _y() : Int {
+		return this.y;
+	}
+}
+
+class Rect(ll: Pt, ur: Pt) extends Obj {
+	this.ll = ll;
+	this.ur = ur;
+
+	def translate(delta: Pt) : Rect {
+    	return Rect(this.ll + delta, this.ur+delta);
+	}
+	def STRING() : String {
+    	return "A Rectangle";
+	}
+	def PRINT() : Nothing {
+		"(".PRINT();
+		this.ll.PRINT();
+		", ".PRINT();
+		this.ur.PRINT();
+		")".PRINT();
+		return;
+	}
+}
+
+class Square(ll: Pt, side: Int) extends Rect {
+	this.ll = ll;
+	this.ur = Pt(this.ll._x() + side, this.ll._y() + side);
+
+	
+}
+
+a = Pt(1,0);
+b = Pt(0,1);
+a.PRINT();
+" + ".PRINT();
+b.PRINT();
+" = ".PRINT();
+(a + b).PRINT();
+"\n".PRINT();
+
+c = Rect(a,b);
+c.PRINT();
+"\n".PRINT();
+
+d = Square(Pt(1,1), 3);
+d.PRINT();
+"\n".PRINT();
+d = d.translate(Pt(2,2));
+d.PRINT();
+"\n".PRINT();
+
+
+
+
+
+
+
+
