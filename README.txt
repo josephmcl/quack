@@ -3,6 +3,9 @@ README.txt
 Quack Compiler 
 JOSEPH McLAUGHLIN
 ================
+Quack is a simple object oriented, type inferred language.
+This is a very early implementation of a compiler for the Quack language.
+================
 Usage: 
 $ ./quack [file]
 Output:
@@ -18,7 +21,7 @@ This can be changed in the future, in fact all the infrastructure is in place in
 The sugar for operators (+,-,*,/) are ADD, SUB, MUL, DIV. 
 
 The typechecker is not the nicest. There are few cases where it can proceed after encountering a type error most errors result in the program exiting.
-This is a potential improvement I might consider in the future.
+This is a potential improvement to consider in the future.
 
 If I could do this again (which I might) I'm going to rework a lot, starting with taking advantage of bison. 
 
