@@ -56,7 +56,7 @@ Rec.qk
 Demos method argument checking.
 
 Sqr.qk  
-Demos con/covarience rules.
+Demos contra/covarience rules.
 
 TypeWalk.qk
 Demos type walking and checking the existence of methods. 
